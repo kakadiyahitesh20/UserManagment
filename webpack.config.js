@@ -44,8 +44,17 @@ module.exports = {
         ]
     },
     devServer: {
+        contentBase: '/src',
         historyApiFallback: true,
+        hot: true,
+        inline: true,
+        port: 3000,
+        proxy: {
+            '**': 'http://localhost:9400',
+        },
+        noInfo: false,
+        headers: { 'Access-Control-Allow-Origin': '*',
+            'Access-Control-Allow-Credentials': 'true' },
     },
-
     devtool: 'inline-source-map',
 };

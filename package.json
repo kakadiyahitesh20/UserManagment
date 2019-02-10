@@ -5,8 +5,9 @@
   "main": "index.js",
   "author": "Hitesh Kakadiya",
   "scripts": {
-    "start": "node ./node_modules/webpack-dev-server/bin/webpack-dev-server.js --open",
-    "build": "node ./node_modules/webpack/bin/webpack.js",
+    "start": "node webpack.server.js --env=dev",
+    "build": "npm run clean & npm run copy & webpack -p --progress",
+    "dev:hot": "webpack-dev-server --hot --inline --progress --colors --watch --display-error-details --display-cached --content-base ./",
     "test": "BABE_ENV=test node ./node_modules/mocha/bin/mocha --require babel-register"
   },
   "devDependencies": {
