@@ -2,7 +2,7 @@ import axios from 'axios';
 
 
 let config = {'api-key': 'RReio98$3#hsdhfDFSe31&sE4e5665DGs'};
-
+let url = 'https://usermanagement-backend.azurewebsites.net';
 
 /*  ---------------------------------------------------------------
          Create New User
@@ -21,7 +21,7 @@ export function createUser(user) {
         "password": user.password
     };
 
-    return axios.post('http://localhost:8098/createNewUser',userObj, {
+    return axios.post(url+'/createNewUser',userObj, {
         headers: config
     })
         .then(function (response) {
@@ -45,7 +45,7 @@ export function  userConfirmationAction(email) {
         "email" : email,
         "status" : "Active"
     };
-    return axios.post('http://localhost:8098/updateUserInfo',userObj, {
+    return axios.post(url+'/updateUserInfo',userObj, {
         headers: config
     })
         .then(function (response) {
@@ -70,7 +70,7 @@ export function checkUserLogin(user) {
         method: 'GET',
         headers: config
     };
-    return fetch('http://localhost:8098/checkUserLogin/'+user.email+'/'+user.password, requestOptions)
+    return fetch(url+'/checkUserLogin/'+user.email+'/'+user.password, requestOptions)
         .then(response => {
             if (!response.ok) {
                 return Promise.reject(response.statusText);
